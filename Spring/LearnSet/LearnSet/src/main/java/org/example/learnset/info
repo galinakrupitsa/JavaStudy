@@ -1,0 +1,5 @@
+curl --location 'HTTP://localhost:8080/hascustomer' \
+--header 'Content-Type: application/json' \
+--data '{
+    "name": "Alex"
+}'
