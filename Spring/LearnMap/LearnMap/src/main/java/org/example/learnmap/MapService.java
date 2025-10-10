@@ -23,7 +23,7 @@ public class MapService {
         } else {
             System.out.println("Ключ " + map.get(key) + " не найден");
         }
-        return " ";
+        return map.get(key);
     }
 
 }

@@ -11,7 +11,7 @@ public class MapController {
     }
     @PostMapping
     public String hasKey(@RequestBody MapDTO mapDTO) {
-        return ("Ключ " + mapService.contain(mapDTO) + " найден");
+        return mapDTO.getKey() + " " + mapService.contain(mapDTO);
 
     };
 }
