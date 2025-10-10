@@ -1,0 +1,5 @@
+curl --location 'HTTP://localhost:8080/haskey' \
+--header 'Content-Type: application/json' \
+--data '{
+    "key": "Иван"
+}'
