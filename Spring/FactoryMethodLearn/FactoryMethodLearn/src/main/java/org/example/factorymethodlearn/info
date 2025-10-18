@@ -1,0 +1,6 @@
+curl --location 'HTTP://localhost:8080/credit/calculate' \
+--header 'Content-Type: application/json' \
+--data '{
+    "type": "basic",
+    "amount": 1234
+}'

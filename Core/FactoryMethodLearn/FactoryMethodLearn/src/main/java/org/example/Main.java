@@ -6,10 +6,17 @@ public class Main {
     public static Logistics logistics;
     private static void configLogistic(String command){
         switch (command){
-            case "truck": logistics = new RoadLogistics();
-            break;
-            case "ship": logistics = new SeaLogistics();
-            break;
+            case "truck":
+                logistics = new RoadLogistics();
+                break;
+            case "ship":
+                logistics = new SeaLogistics();
+                break;
+
+            default:
+                System.out.println("Invalid command");
+                System.exit(-1);
+                break;
         }
     }
     public static void doLogistics() {
