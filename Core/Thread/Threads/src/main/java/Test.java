@@ -1,31 +1,32 @@
+import java.util.List;
+import java.util.Optional;
+
 public class Test {
-    public static void main(String[] args) throws InterruptedException {
-        MyTask myTask = new MyTask();
-        Thread thread0 = new Thread(() -> {
-            System.out.println("Поток через лямбду: " + Thread.currentThread().getName());
-        });
-        thread0.start();
-        Thread.sleep(1500);
-        myTask.stop();
-        thread0.join(); // ждём, пока поток завершится
-        System.out.println("✅ Поток остановлен!");
-        Thread thread1 = new Thread(() -> {
-            System.out.println("Поток через лямбду: " + Thread.currentThread().getName());
-        });
-
-        thread1.start();
-        Thread.sleep(500);
-
-        Thread thread2 = new Thread(() -> {
-            for (int i = 0; i < 5; i++) {
-                System.out.println("Поток 2: шаг " + i);
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        thread2.start();
+    public static void main(String[] args)  {
+        final User user = new User("Tony", "mail@gmail.com");
+        System.out.println(user.getName());
+        System.out.println(user.getMail()
+                .map((m) -> m.toUpperCase())
+                .orElseGet(() ->{
+                String s="yoyo";
+                return s + "dfdsfdfsdfsfdf";
+        }
+        ));
     }
+}
+ class User{
+    private String name;
+    private String mail;
+
+    public User(String name, String mail) {
+        this.name = name;
+        this.mail = mail;
+    }
+    public String getName() {
+        return name;
+    }
+    public Optional<String> getMail() {
+        return Optional.ofNullable(mail);
+    }
+
 }
