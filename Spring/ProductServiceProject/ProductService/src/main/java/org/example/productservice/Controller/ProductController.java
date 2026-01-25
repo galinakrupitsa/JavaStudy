@@ -1,11 +1,9 @@
 package org.example.productservice.Controller;
 
+import org.example.productservice.DTO.ProductDTO;
 import org.example.productservice.Model.Product;
 import org.example.productservice.Service.ProductService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -20,4 +18,8 @@ public class ProductController {
         return productService.getProduct(productId);
     }
 
+    @PostMapping ("/products")
+    public ProductDTO addProducts(@RequestBody ProductDTO productDTO) {
+        return productService.addProduct();
+    }
 }
