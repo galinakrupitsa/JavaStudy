@@ -19,7 +19,7 @@ public class ProductController {
     }
 
     @PostMapping ("/products")
-    public ProductDTO addProducts(@RequestBody ProductDTO productDTO) {
-        return productService.addProduct();
+    public Product addProducts(@RequestBody Product product) {
+        return productService.addProduct(product);
     }
 }
