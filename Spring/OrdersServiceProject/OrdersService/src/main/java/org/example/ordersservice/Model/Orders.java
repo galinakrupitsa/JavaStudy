@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
+@Getter @Setter
 @Table(name = "orders_service")
 public class Orders {
     @Id
@@ -14,6 +15,5 @@ public class Orders {
     public Long id;
     public Long userId;
     public Long productId;
-    public Long totalPrice;
-
+    public Double totalCost;
 }
