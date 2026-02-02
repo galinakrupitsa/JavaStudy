@@ -14,6 +14,8 @@ public class Orders {
     @PrimaryKeyJoinColumn
     public Long id;
     public Long userId;
+    public String firstName;
+    public String secondName;
     public Long productId;
     public Double totalCost;
 }

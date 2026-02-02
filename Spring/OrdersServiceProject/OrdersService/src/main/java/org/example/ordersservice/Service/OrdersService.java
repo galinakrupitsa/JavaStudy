@@ -2,6 +2,7 @@ package org.example.ordersservice.Service;
 
 import lombok.RequiredArgsConstructor;
 import org.example.ordersservice.Client.ProductClient;
+import org.example.ordersservice.Client.UserClient;
 import org.example.ordersservice.Model.Orders;
 import org.example.ordersservice.Repository.OrdersRepository;
 import org.springframework.stereotype.Service;
@@ -11,21 +12,27 @@ import org.springframework.web.client.RestTemplate;
 
 public class OrdersService {
     public final OrdersRepository ordersRepository;
-
+    public final UserClient userClient;
     public final ProductClient productClient;
-    public OrdersService(ProductClient productClient, OrdersRepository ordersRepository) {
+    public OrdersService(ProductClient productClient, OrdersRepository ordersRepository, UserClient userClient) {
         this.productClient = productClient;
         this.ordersRepository = ordersRepository;
+        this.userClient = userClient;
     }
+
     public Orders createOrder(Long userId, Long productId, Integer quantity) {
 
         Double price = productClient.getProductPrice(productId);
         Double totalCost = price * quantity;
+        String firstName = userClient.getUserName(userId);
+        String secondName = userClient.getUserName(userId);
 
         Orders order = new Orders();
         order.setUserId(userId);
         order.setProductId(productId);
         order.setTotalCost(totalCost);
+        order.setFirstName(firstName);
+        order.setSecondName(secondName);
 
         return ordersRepository.save(order);
     }

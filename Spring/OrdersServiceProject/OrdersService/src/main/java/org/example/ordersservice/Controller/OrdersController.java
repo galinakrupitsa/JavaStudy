@@ -9,13 +9,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.Serial;
+
 @RestController
 @RequestMapping("/api/v1")
 public class OrdersController {
     public final OrdersService ordersService;
+
     public OrdersController(OrdersService ordersService) {
         this.ordersService = ordersService;
     }
+
     @PostMapping("/orders")
     public DTOresponse createOrder(@RequestBody DTOrequest dto){
         Orders order = ordersService.createOrder(
@@ -23,12 +27,13 @@ public class OrdersController {
                 dto.getProductId(),
                 dto.getQuantity()
         );
-
         return new DTOresponse(
                 order.getId(),
                 order.getUserId(),
                 order.getProductId(),
-                order.getTotalCost()
+                order.getTotalCost(),
+                order.getFirstName(),
+                order.getSecondName()
         );
     }
 }
