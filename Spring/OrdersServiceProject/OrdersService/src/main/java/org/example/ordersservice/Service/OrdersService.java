@@ -8,6 +8,9 @@ import org.example.ordersservice.Repository.OrdersRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Service
 
 public class OrdersService {
@@ -25,7 +28,7 @@ public class OrdersService {
         Double price = productClient.getProductPrice(productId);
         Double totalCost = price * quantity;
         String firstName = userClient.getUserName(userId);
-        String secondName = userClient.getUserName(userId);
+        String secondName = userClient.getUserSecondName(userId);
 
         Orders order = new Orders();
         order.setUserId(userId);
@@ -33,7 +36,21 @@ public class OrdersService {
         order.setTotalCost(totalCost);
         order.setFirstName(firstName);
         order.setSecondName(secondName);
+        order.setCreatedAt(LocalDateTime.now());
+        order.setQuantity(quantity);
 
         return ordersRepository.save(order);
+    }
+
+    public Double totalCostByTime(LocalDateTime start, LocalDateTime end){
+        return ordersRepository.getTotalCostBetween(start,end);
+    }
+
+    public Integer getProductSalesForDay(Long productId, LocalDate date) {
+
+        LocalDateTime start = date.atStartOfDay();
+        LocalDateTime end = date.atTime(23, 59, 59);
+
+        return ordersRepository.sumQuantityByProductAndDate(productId, start, end);
     }
 }
