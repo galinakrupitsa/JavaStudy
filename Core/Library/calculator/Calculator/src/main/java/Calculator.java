@@ -42,10 +42,10 @@ public class Calculator {
         System.out.println("Сумма этих чисел, умноженная на день недели = ");
         return a*b*Calculator.getDayOfWeekNumber();
     }
-    
+
     //Прибавляем к первому числу второе, столько раз, какой сегодня день недели
     public double sumDayOfWeekTimes(double a, double b) {
-        System.out.println("Прибавляем к первому числу второе, столько раз, какой сегодня день недели ");
+        System.out.println("Прибавляем к первому числу второе, столько раз, какой сегодня день недели = ");
         int dayNumber = getDayOfWeekNumber();
         double sum = a;
         for(int i=1; i<= dayNumber; i++){
