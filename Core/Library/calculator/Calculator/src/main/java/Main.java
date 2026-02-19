@@ -12,8 +12,8 @@ public class Main {
         System.out.print("Введите второе число: ");
         double b = scanner.nextDouble();
 
-        System.out.println(calculator.multiplayOnDayOfWeek(a, b));
-        
+        System.out.println(calculator.sumDayOfWeekTimes(a, b));
+
 
         scanner.close();
     }

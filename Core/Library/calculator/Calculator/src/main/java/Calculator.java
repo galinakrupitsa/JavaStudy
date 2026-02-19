@@ -37,12 +37,22 @@ public class Calculator {
 //        System.out.println("Сегодня день недели номер " + dayNumber);
         return dayNumber;
     }
+    // Сумма чисел, умноженная на день недели
     public double multiplayOnDayOfWeek(double a, double b) {
-System.out.println("Сумма этих чисел, умноженная на день недели = ");
+        System.out.println("Сумма этих чисел, умноженная на день недели = ");
         return a*b*Calculator.getDayOfWeekNumber();
     }
+    
+    //Прибавляем к первому числу второе, столько раз, какой сегодня день недели
     public double sumDayOfWeekTimes(double a, double b) {
-return  a+b*Calculator.getDayOfWeekNumber();
+        System.out.println("Прибавляем к первому числу второе, столько раз, какой сегодня день недели ");
+        int dayNumber = getDayOfWeekNumber();
+        double sum = a;
+        for(int i=1; i<= dayNumber; i++){
+            sum = sum + b;
+        }
+
+        return  a+b*Calculator.getDayOfWeekNumber();
 
     }
 }
