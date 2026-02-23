@@ -20,17 +20,18 @@ public class Product {
         return quantity;
     }
 
-    public void sell(int quantity){
-        if(this.quantity < quantity){
+    public void sell(int amount){
+        if(this.quantity < amount){
             System.out.println("Sold out of stock");
         }
-        else {quantity--;
-            System.out.println("Продано " + quantity + " шт.");}
+        else {
+            quantity= quantity -amount;
+            System.out.println("Продано " + amount + " шт.");}
     }
-    public void restock(int quantity)
+    public void restock(int amount)
     {
-        quantity++;
-        System.out.println("Добавлено " + quantity + " шт.");}
+        quantity = quantity + amount;
+        System.out.println("Добавлено " + amount + " шт.");}
 
     @Override
     public String toString(){
