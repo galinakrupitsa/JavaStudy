@@ -2,9 +2,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Employee {
-    private String firstName;
-    private double salary;
-    int yearsOfExperience;
+    public String firstName;
+    public double salary;
+    public int yearsOfExperience;
     public Employee(String firstName, double salary, int yearsOfExperience) {
         this.firstName = firstName;
         this.salary = salary;
@@ -22,17 +22,22 @@ public class Employee {
     public void setSalary(double salary) {
         this.salary = salary;
     }
-    public int getAge() {
+    public int getYearsOfExperience() {
         return yearsOfExperience;
     }
     public void setAge(int age) {
         this.yearsOfExperience = yearsOfExperience;
     }
-    List<Employee> employees = new ArrayList<>();
 
-    public void addEmployee(Employee employee) {
-        employees.add(employee);
+    public  String getPosition() {
+        return null;
     }
+
+    @Override
+    public String toString(){
+        return "Сотрудник  " + firstName + " Должность  " + getPosition() + salary + " Стаж работы " + yearsOfExperience;
+    }
+
    public double calculateSalary() {
 
        if (yearsOfExperience < 3) {
