@@ -17,6 +17,10 @@ public class Manager extends Employee {
         }
         return bonus;
     }
+    public double calculateSalary() {
+        salary = salary + calculateBonus();
+        return salary;
+    }
 
 
 }

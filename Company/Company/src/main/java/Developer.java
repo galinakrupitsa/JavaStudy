@@ -13,7 +13,5 @@ public String getPosition() {
         salary = salary*1.5;
         return salary;
 }
-public void getVocation(String vocation) {
 
-}
 }
