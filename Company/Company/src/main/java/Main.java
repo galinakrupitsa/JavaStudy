@@ -20,6 +20,7 @@ public class Main {
         System.out.println("Сотрудник с максимальной зп: "+ max.getFirstName());
         Employee maxYears = company.findMaxYearsOfExperience();
         System.out.println("Самый большой стаж: " + maxYears.getFirstName());
+System.out.println(company.mapOfSalary());
     }
 
 

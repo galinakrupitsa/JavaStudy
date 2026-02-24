@@ -1,16 +1,20 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Company {
     List<Employee> employees = new ArrayList<>();
     public void addEmployee(Employee employee) {
         employees.add(employee);
     }
+
     public void showAllEmployees() {
         for (Employee employee : employees) {
             System.out.println(employee);
         }
     }
+
 public void showAllSalaries() {
         for (Employee employee : employees) {
             System.out.println( employee.getPosition() +" " + employee.getFirstName()+ " " + employee.getSalary());
@@ -36,7 +40,7 @@ public Employee findMaxSalary() {
     }
     return maxSalary;
 }
-    public Employee findMaxYearsOfExperience() {
+public Employee findMaxYearsOfExperience() {
         if (employees.isEmpty()) {
             return null;
         }
@@ -48,7 +52,14 @@ public Employee findMaxSalary() {
             }
             return maxYearsOfExperience;
         }
+    }
 
+    public Map<String, Double> mapOfSalary(){
+        Map<String,Double> salaryMap = new HashMap<>();
+        for (Employee employee : employees) {
+            salaryMap.put(employee.getFirstName(), employee.calculateSalary());
+        }
+        return salaryMap;
     }
 
 }
