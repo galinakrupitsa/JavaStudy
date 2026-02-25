@@ -16,12 +16,10 @@ public class Main {
     Employee employee2 = company.findEmployeeByName("Den");
     int s = employee2.getYearsOfExperience();
     System.out.println(s);
-        Employee max = company.findMaxSalary();
-        System.out.println("Сотрудник с максимальной зп: "+ max.getFirstName());
-        Employee maxYears = company.findMaxYearsOfExperience();
-        System.out.println("Самый большой стаж: " + maxYears.getFirstName());
-System.out.println(company.mapOfSalary());
+    Employee max = company.findMaxSalary();
+    System.out.println("Сотрудник с максимальной зп: "+ max.getFirstName());
+    Employee maxYears = company.findMaxYearsOfExperience();
+    System.out.println("Самый большой стаж: " + maxYears.getFirstName());
+    System.out.println(company.mapOfSalary());
     }
-
-
 }
