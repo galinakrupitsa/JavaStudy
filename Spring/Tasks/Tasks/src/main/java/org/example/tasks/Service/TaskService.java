@@ -24,4 +24,7 @@ public class TaskService {
     public Task getTaskById(Long id) {
         return taskRepo.findById(id).orElse(null);
     }
+    public List<Task> findByTitle (String title){
+        return taskRepo.findByTitleContainingIgnoreCase(title);
+    }
 }

@@ -28,5 +28,9 @@ public class TaskController {
     public Task getTaskById(@PathVariable Long id){
             return taskService.getTaskById(id);
     }
+    @GetMapping("/search")
+    public List<Task> getTasksByTitle(@RequestParam String title){
+            return taskService.findByTitle(title);
+    }
 
 }
