@@ -17,7 +17,7 @@ public class TaskController {
         this.taskService = taskService;
     }
     @PostMapping("/tasks")
-    public Task createTask(@RequestBody Task task) {
+    Task createTask(@RequestBody Task task) {
         return taskService.create(task);
     }
     @GetMapping("/all")
