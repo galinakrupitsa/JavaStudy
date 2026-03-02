@@ -21,4 +21,7 @@ public class TaskService {
     public List<Task> findAll() {
         return taskRepo.findAll();
     }
+    public Task getTaskById(Long id) {
+        return taskRepo.findById(id).orElse(null);
+    }
 }

@@ -17,11 +17,16 @@ public class TaskController {
         this.taskService = taskService;
     }
     @PostMapping("/tasks")
-    Task createTask(@RequestBody Task task) {
+    public Task createTask(@RequestBody Task task) {
         return taskService.create(task);
     }
     @GetMapping("/all")
-    List<Task> getAllTasks() {
+    public List<Task> getAllTasks() {
             return taskService.findAll();
     }
+    @GetMapping("/id/{id}")
+    public Task getTaskById(@PathVariable Long id){
+            return taskService.getTaskById(id);
+    }
+
 }

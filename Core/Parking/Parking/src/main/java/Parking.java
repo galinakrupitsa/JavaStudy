@@ -19,8 +19,9 @@ public class Parking {
 public void parkingCar(String number){
         Car car = findCar(number);
         if (car != null) {
-            System.out.println("Машина не найдена");
+            System.out.println("Машина существует");
         }
+        else{System.out.println("Машина не существует");}
         if(car.isParked()){System.out.println(" Машина уже на парковке");}
         else {car.parking();
         System.out.println("Машина "+ car.getNumber()+" заехала на парковку");}

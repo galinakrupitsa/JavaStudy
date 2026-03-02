@@ -2,24 +2,44 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
+        Library library = new Library();
 
-        System.out.print("Введите название книги: ");
-        String title = scanner.nextLine();
+        // добавим книги
+        library.addBook(new Book("Java"));
+        library.addBook(new Book("Spring"));
+        library.addBook(new Book("NutCracker"));
 
-        System.out.print("Введите автора: ");
-        String author = scanner.nextLine();
 
-        System.out.print("Введите год издания: ");
-        int year = scanner.nextInt();
+        // добавим пользователей
+        library.addUser(new User("Alex"));
+        library.addUser(new User("Maria"));
+        library.addUser(new User("Eva"));
 
-        Book book = new Book(title, author, year);
+        while (true) {
 
-        System.out.println("Создана книга:");
-        System.out.println(book);
+            System.out.println("\nВведите название книги:");
+            String title = scanner.nextLine();
 
-        scanner.close();
+            System.out.println("Введите действие (взять/вернуть):");
+            String action = scanner.nextLine();
+
+            System.out.println("Введите имя пользователя:");
+            String userName = scanner.nextLine();
+
+            if (action.equalsIgnoreCase("взять")) {
+                library.borrowBook(title, userName);
+            } else if (action.equalsIgnoreCase("вернуть")) {
+                library.returnBook(title, userName);
+            } else {
+                System.out.println("Неизвестное действие.");
+            }
+        }
+
+
+
+
     }
 
-    }
-
+}

@@ -1,4 +1,6 @@
-package PACKAGE_NAME;
-
-public class KidsGift {
+public class KidsGift extends Gift {
+    @Override
+    public String getName(){
+        return "Игрушка ";
+    }
 }
