@@ -1,4 +1,4 @@
-package PACKAGE_NAME;
+public abstract class Gift {
+    public  abstract String getName();
 
-public class Gift {
 }
