@@ -3,8 +3,11 @@ import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) {
-        int[] array = {8, 4, 2, 3, 1};
+        int[] array = {8, 4, 2, 3, 10};
         int target = 7;
+
+        int[] res = findMaxAndIndex(array);
+        System.out.println("Максимально число и его индекс" + Arrays.toString(res));
 
         System.out.println(Arrays.toString(array));
         System.out.println("Метод пузырька");
@@ -52,6 +55,21 @@ public class Main {
         return new int[]{-1, -1}; // если пара не найдена
     }
 
+public static int [] findMaxAndIndex(int[] array) {
+        if (array==null || array.length==0) {
+            throw new IllegalArgumentException();
+        }
+    int n = array.length;
+    int max = array[0];
+    int index = 0;
+    for (int i = 0; i < n; i++) {
+        if(array[i]>max){
+            max = array[i];
+            index = i;
+        }
+    }
+    return new int[]{max, index};
+    }
 }
 
 
