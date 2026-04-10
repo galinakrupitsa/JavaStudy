@@ -3,8 +3,13 @@ import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) {
-        int[] array = {8, 4, 2, 3, 10};
+        int[] array = {1, 4, 2, 8, 10};
         int target = 7;
+
+        int second = secondMax(array);
+        System.out.println("Второй максимум " + second);
+        int [] maxmin = findMaxAndMin(array);
+        System.out.println("Max&Min" + Arrays.toString(maxmin));
 
         int[] res = findMaxAndIndex(array);
         System.out.println("Максимально число и его индекс" + Arrays.toString(res));
@@ -55,7 +60,7 @@ public class Main {
         return new int[]{-1, -1}; // если пара не найдена
     }
 
-public static int [] findMaxAndIndex(int[] array) {
+    public static int [] findMaxAndIndex(int[] array) {
         if (array==null || array.length==0) {
             throw new IllegalArgumentException();
         }
@@ -70,6 +75,35 @@ public static int [] findMaxAndIndex(int[] array) {
     }
     return new int[]{max, index};
     }
+
+    public static int [] findMaxAndMin(int[] array) {
+        if(array==null||array.length==0)
+        {throw new IllegalArgumentException("Массив пуст");}
+        int n = array.length;
+        int max = array[0];
+        int min = array[0];
+        for (int i = 0; i<n; i++){
+            if (array[i]<min){min = array[i];}
+            if (array[i]>max){max = array[i];}
+        }
+        return new int[]{min,max};
+    }
+
+    public static int secondMax(int[] array) {
+        int secondMax = Integer.MIN_VALUE;
+        int max = array[0];
+        for (int num : array) {
+            if (num > max) {
+                secondMax = max;
+                max = num;
+            }
+            else if(num>secondMax&&num!=max){
+                secondMax = num;
+            }
+        }
+        return secondMax;
+    }
+
 }
 
 
