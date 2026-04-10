@@ -5,10 +5,15 @@ public class Main {
     public static void main(String[] args) {
         int[] array = {1, 4, 2, 8, 10};
         int target = 7;
+        reverse(array);
+        System.out.println("реверс ");
+        for (int num : array) {
+            System.out.print( num + ", ");
+        }
 
         int second = secondMax(array);
         System.out.println("Второй максимум " + second);
-        int [] maxmin = findMaxAndMin(array);
+        int[] maxmin = findMaxAndMin(array);
         System.out.println("Max&Min" + Arrays.toString(maxmin));
 
         int[] res = findMaxAndIndex(array);
@@ -26,10 +31,11 @@ public class Main {
             System.out.println("Пара не найдена.");
         }
     }
-        public static void bubbleSort(int[] array){
+
+    public static void bubbleSort(int[] array) {
         int n = array.length;
         boolean swapped = false;
-        for (int i = 0; i <n-1; i++) {
+        for (int i = 0; i < n - 1; i++) {
             swapped = false;
             for (int j = 0; j < n - 1 - i; j++) {
                 if (array[j] > array[j + 1]) {
@@ -60,33 +66,38 @@ public class Main {
         return new int[]{-1, -1}; // если пара не найдена
     }
 
-    public static int [] findMaxAndIndex(int[] array) {
-        if (array==null || array.length==0) {
+    public static int[] findMaxAndIndex(int[] array) {
+        if (array == null || array.length == 0) {
             throw new IllegalArgumentException();
         }
-    int n = array.length;
-    int max = array[0];
-    int index = 0;
-    for (int i = 0; i < n; i++) {
-        if(array[i]>max){
-            max = array[i];
-            index = i;
+        int n = array.length;
+        int max = array[0];
+        int index = 0;
+        for (int i = 0; i < n; i++) {
+            if (array[i] > max) {
+                max = array[i];
+                index = i;
+            }
         }
-    }
-    return new int[]{max, index};
+        return new int[]{max, index};
     }
 
-    public static int [] findMaxAndMin(int[] array) {
-        if(array==null||array.length==0)
-        {throw new IllegalArgumentException("Массив пуст");}
+    public static int[] findMaxAndMin(int[] array) {
+        if (array == null || array.length == 0) {
+            throw new IllegalArgumentException("Массив пуст");
+        }
         int n = array.length;
         int max = array[0];
         int min = array[0];
-        for (int i = 0; i<n; i++){
-            if (array[i]<min){min = array[i];}
-            if (array[i]>max){max = array[i];}
+        for (int i = 0; i < n; i++) {
+            if (array[i] < min) {
+                min = array[i];
+            }
+            if (array[i] > max) {
+                max = array[i];
+            }
         }
-        return new int[]{min,max};
+        return new int[]{min, max};
     }
 
     public static int secondMax(int[] array) {
@@ -96,14 +107,26 @@ public class Main {
             if (num > max) {
                 secondMax = max;
                 max = num;
-            }
-            else if(num>secondMax&&num!=max){
+            } else if (num > secondMax && num != max) {
                 secondMax = num;
             }
         }
         return secondMax;
     }
 
+    public static void reverse(int[] array) {
+        int n = array.length;
+        int left = 0;
+        int right = n - 1;
+        while (left < right) {
+            int temp = array[left];
+            array[left] = array[right];
+            array[right] = temp;
+            right--;
+            left++;
+        }
+
+    }
 }
 
 
