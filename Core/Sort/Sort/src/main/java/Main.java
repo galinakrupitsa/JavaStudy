@@ -3,13 +3,27 @@ import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) {
+        int [] prices = {19,8,3,4,5,1,7,20};
+        MaxProfit maxProfit = new MaxProfit();
+        System.out.println("Макс профит "+ maxProfit.maxProfit(prices));
+
+        MaxProfitDays maxProfitDays = new MaxProfitDays();
+        int [] resmax = maxProfitDays.maxProfit(prices);
+        System.out.println("для профита " + resmax[0]
+                + " нужно купить в день " + resmax[1]
+                + " и продать в день " + resmax[2]);
         int[] array = {1, 4, 2, 8, 10};
         int target = 7;
         reverse(array);
         System.out.println("реверс ");
         for (int num : array) {
-            System.out.print( num + ", ");
+            System.out.print( num + " ");
         }
+        //бинарное дерево - поиск числа
+        int [] numbers = {1,3,5,7,9,11,13};
+        int target2 = 11;
+        System.out.println(Arrays.toString(numbers));
+        System.out.println("Бинарный поиск числа " + binarySearch(numbers, target2));
 
         int second = secondMax(array);
         System.out.println("Второй максимум " + second);
@@ -127,6 +141,21 @@ public class Main {
         }
 
     }
+
+    public static int binarySearch(int[] numbers, int target) {
+        int left = 0;
+        int right = numbers.length - 1;
+        while (left <= right) {
+            int middle = left + (right-left)/2;
+            if (numbers[middle]==target) {
+                return middle;
+            } else if (numbers[middle] > target) {
+                right = middle -1;}
+                else{left = middle + 1;}
+            }
+        return -1; // не найден
+        }
+
 }
 
 
